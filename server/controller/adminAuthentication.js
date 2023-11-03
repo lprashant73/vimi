@@ -82,13 +82,13 @@ const isAuth = (req, res, next) => {
     let token;
     let verifiedToken;
     const authorization = req.headers.authorization;
-    console.log(req.body)
-    console.log(req.headers);
+    console.log("Request-Body: ", req.body)
+    console.log("Request-Headers: ",req.headers);
     if (authorization && authorization.startsWith('Bearer')) {
         token = authorization.split(' ')[1];
         try {
             verifiedToken = jwt.verify(token, process.env.SECRET_KEY);
-            console.log(verifiedToken);
+            console.log("Verified-User's-credentials: ", verifiedToken);
             req._id = verifiedToken._id;
             req.name = verifiedToken.name;
             req.email = verifiedToken.email;
