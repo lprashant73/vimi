@@ -131,6 +131,7 @@ const getUser = async (req, res, next) => {
         const user = await User.findOne({ _id: _id });
         const family = await Family.findOne({ _id: user.family._id }).populate({ path: "members", model: 'User' }).exec();
         if (user) {
+            //console.log("details of the response from the server :", res);
             return res.status(200).json({ user: user, family: family });
         }
         const error = new Error('User not found')

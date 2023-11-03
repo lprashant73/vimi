@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000 ;
 require('./mongodbConnect/connection.js');
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json());//parse byte-data into json file.
 app.use(`/pictures`, express.static(path.join(__dirname, '/'+'pictures')));
 app.use(router);
 app.use((error, req, res, next) => {
